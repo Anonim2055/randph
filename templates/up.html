@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose image</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .header {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header button {
+            color: white;
+            background-color: #003366;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            /* Use a medium font size */
+            font-size: 18px;
+            /* Add some padding around the text */
+            padding: 10px 20px;
+            /* Add some margin around the button */
+            margin: 20px;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #loading img {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* form style */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form input[type="file"] {
+            margin: 10px 0;
+        }
+
+
+        }
+    </style>
+<script src="{{ url_for('static', filename='upload.js') }}"></script>
+</head>
+    <div class="header">
+        <button onclick="home()">Home</button>
+        <!-- button onclick="MyD()">My diary</button> -->
+        <button onclick="logout()">Logout</button>
+    </div>
+    <form action="upload" method="POST" enctype="multipart/form-data" name="uploadForm" onsubmit="showLoading()">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <p>Choose image to upload:</p>
+        <input type="file" name="file" accept="image/*" onchange="enableUploadButton()">
+        <input type="submit" value="Upload" id="uploadButton" disabled>
+    </form>
+    <div id="loading">
+        <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Loading">
+        <p>Loading...</p>
+    </div>
+</body>
+</html>

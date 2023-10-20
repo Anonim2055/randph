@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send location</title>
+</head>
+<body>
+    <button id="getLocationButton">Send location</button>
+
+    <script>
+        // Ask permission for location
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                // Save location
+                let locationData = { latitude, longitude };
+
+                // Make button active
+                const getLocationButton = document.getElementById("getLocationButton");
+                getLocationButton.disabled = false;
+
+                // Location send with button
+                getLocationButton.addEventListener("click", () => {
+                    // send to server
+                    fetch("/send_location", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(locationData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        // redirect user to /home
+                        window.location.href = "/upload";
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                });
+            });
+        } else {
+            alert("Location does not supported by browser");
+        }
+    </script>
+</body>
+</html>

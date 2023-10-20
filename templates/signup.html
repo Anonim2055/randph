@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randewoo - Sign Up</title>
+    <link rel="stylesheet" href="static/styles_sign_up.css">
+</head>
+<body>
+    <div class="container">
+<form class="signup-form" method="POST" action="signup" onsubmit="return validateForm()">
+    <h1>Sign Up to Randewoo</h1>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="pass" id="pass" placeholder="Password" required>
+    <input type="password" name="confirmPass" id="confirmPass" placeholder="Confirm Password" required>
+    <span id="passwordMismatch" style="color: red; display: none;">Passwords didn't match</span>
+    <button type="submit">Sign Up</button>
+    <p>Already have an account? <a href="login">Log In</a></p>
+    <a href="home">Home page</a>
+</form>
+
+
+    </div>
+    <script src="{{ url_for('static', filename='signUp.js') }}"></script>
+
+</body>
+</html>

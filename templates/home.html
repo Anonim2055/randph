@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Randewoo</title>
+    <!-- Use a custom font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
+    <!-- Use a custom style sheet for the page -->
+    <style>
+        /* Use a style sheet for the page */
+        /* Define the style for the body element */
+        body {
+            /* Use a light gray background color */
+            background-color: #f0f0f0;
+            /* Use a sans-serif font family */
+            font-family: "Roboto Slab", sans-serif;
+            /* Use a dark gray text color */
+            color: #333333;
+        }
+
+        /* Define the style for the container element */
+        .container {
+            /* Center the element horizontally */
+            margin: 0 auto;
+            /* Set the maximum width to 800 pixels */
+            max-width: 800px;
+            /* Add some padding around the content */
+            padding: 20px;
+        }
+
+        /* Define the style for the h1 element */
+        h1 {
+            /* Use a dark blue text color */
+            color: C;
+            /* Use a large font size */
+            font-size: 36px;
+            /* Align the text to the center */
+            text-align: center;
+        }
+
+        /* Define the style for the p element */
+        p {
+            /* Use a medium font size */
+            font-size: 18px;
+            /* Align the text to the center */
+            text-align: center;
+        }
+
+        /* Define the style for the button element */
+        button {
+            /* Use a dark blue background color */
+            background-color: #003366;
+            /* Use a white text color */
+            color: white;
+            /* Use a medium font size */
+            font-size: 18px;
+            /* Add some padding around the text */
+            padding: 10px 20px;
+            /* Add some margin around the button */
+            margin: 20px;
+            /* Make the button look like a link when hovered over */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Use a div element to center the content -->
+    <div class="container">
+            {% if username %}
+                <span style="font-size: 24px;">Hello {{ username }}</span>
+            {% endif %}
+            <!-- Use an h1 element to display the greeting -->
+        <h1>
+            Welcome to Randewoo
+
+        </h1>
+        <!-- Use a p element to display a short introduction -->
+        <p>Randewoo is app for random sharing of your photos</p>
+        <!-- Use a button element -->
+        {% if username %}
+        <button onclick="upload()">Upload new photo</button>
+        <!-- <button onclick="diary()">My Diary</button> -->
+        <button onclick="logout()">Logout</button>
+        {% else %}
+        <button onclick="startApp()">Signup</button>
+        <button onclick="logIn()">Login</button>
+        {% endif %}
+    </div>
+    <!-- Use a script element to define functions -->
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+</body>
+</html>
+

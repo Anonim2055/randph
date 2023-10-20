@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary - Log In</title>
+    <link rel="stylesheet" href="static/stylesLogin.css">
+</head>
+<body>
+    <div class="container">
+        <form class="login-form" action="login" method="POST">
+            {% if wrong %}
+            <h2 class="error">Wrong username or password</h2>
+            {% else %}
+            <h1>Welcome Back to Randewoo</h1>
+            {% endif %}
+            <input type="text" name="username"  placeholder="Nickname" required>
+            <input type="password" name="pass" placeholder="Password" required>
+            <button type="submit">Log In</button>
+            <p>New user? <a href="signup">Sign Up</a></p>
+            <a href="home">Home page </a>
+            
+        </form>
+    </div>
+</body>
+</html>
